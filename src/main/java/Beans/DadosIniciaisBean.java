@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bean;
+package Beans;
 
 import Postagem.Postagem;
 import Postagem.Publicacao;
@@ -35,12 +35,10 @@ public class DadosIniciaisBean implements DadosIniciaisBeanLocal {
     @Override
     @PostConstruct
     public void init() {
-        // Chame a lógica de carga inicial aqui
         carregarDados();
     }
 
     private void carregarDados() {
-        // Criação de Usuários e Credenciais
         Credencial credencial1 = new Credencial("email1@example.com", "senha1", Perfil.CANDIDATO);
         Usuario usuario1 = new Usuario("Nome1", LocalDate.of(1990, 1, 1), 123456789l,credencial1);
         
@@ -99,7 +97,7 @@ public class DadosIniciaisBean implements DadosIniciaisBeanLocal {
                 usuario1,
                 "Conteúdo da Postagem 1",
                 null,
-                Publicacao.EDITAIS
+                Publicacao.EDITAL
         );
 
         Postagem postagem2 = new Postagem(
@@ -108,7 +106,7 @@ public class DadosIniciaisBean implements DadosIniciaisBeanLocal {
                 usuario2,
                 "Conteúdo da Postagem 2",
                 null,
-                Publicacao.EDITAIS
+                Publicacao.EDITAL
         );
 
         entityManager.persist(postagem1);

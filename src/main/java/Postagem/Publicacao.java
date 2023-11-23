@@ -9,5 +9,5 @@ package Postagem;
  * @author welin
  */
 public enum Publicacao  {
-    EDITAIS, NOTICIAS, ORIENTACOES, GABARITOS, PROVAS
+    EDITAL, NOTICIA, ORIENTACAO, GABARITO, PROVA
 }

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <meta charset="UTF-8" />
+        <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="../resources/css/login.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"    
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous" />
+</h:head>
+<h:body>
+   <div class="login__panel">
+        <div class="icon">
+            <i class="material-symbols-outlined marcaRede">gamepadREDE</i> 
+        </div>
+
+        <h:form>
+           <p:messages globalOnly="true"/>
+           <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+              <p:outputLabel for="username" value="Username"/>
+              <p:inputText class="inputLogin__user" id="username" value="#{loginController.email}"/>
+              <p:message for="username"/>
+
+              <p:outputLabel for="password" value="Password"/>
+              <p:inputText class="inputLogin__pass" id="password" value="#{loginController.password}" type="password"/>
+              <p:message for="password"/>
+              
+              <p:commandButton
+                      id="submit"
+                      update="@form"
+                      value="Login"
+                      action="#{loginController.execute}"
+                      ajax="false"/>
+              <p:commandButton
+                      id="submit2"
+                      value="Cadastre-se"
+                      action="#{pageController.goToLogin()}"
+                      ajax="false"/>
+           </h:panelGrid>
+        </h:form>
+   </div>
+</h:body>
+</html>
+
