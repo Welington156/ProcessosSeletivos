@@ -1,56 +1,52 @@
-body{
-    --rede-rosa: #A239CA;
-    --rede-void: #0E0B16;
-    --rede-roxo: #8A2BE2;
-    --rede-cinza: #bbbbbb;
+body {
+    --rede-azul: #3498db;
+    --rede-verde: #2ecc71;
+    --rede-cinza: #95a5a6;
     --rede-branco: white;
-    --rede-void2: #0E0B16;
-}
-
-body{
+    --rede-azul-escuro: #2980b9;
+    
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(45deg,var(--rede-void), var(--rede-roxo));
+    background-image: linear-gradient(45deg, var(--rede-azul-escuro), var(--rede-azul));
 }
 
-.login__panel{
+.login__panel {
     background-color: var(--rede-branco);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     padding: 4vw;
     border-radius: 30px;
 }
 
-body .ui-inputfield.ui-state-hover{
-    border-color: var(--rede-rosa);
+body .ui-inputfield.ui-state-hover {
+    border-color: var(--rede-verde);
 }
 
-body .ui-inputfield.ui-state-focus{
-    border-color: var(--rede-roxo);
-    box-shadow: var(--rede-roxo) 2em;
+body .ui-inputfield.ui-state-focus {
+    border-color: var(--rede-azul);
+    box-shadow: 0 0 10px var(--rede-azul);
 }
 
-body .ui-button{
-    background-color: var(--rede-roxo);
-    border: 1px solid var(--rede-void);
+body .ui-button {
+    background-color: var(--rede-azul);
+    border: 1px solid var(--rede-azul-escuro);
 }
 
-body .ui-button:hover{
+body .ui-button:hover {
     background-color: var(--rede-cinza);
-    color: var(--rede-void);
-    border: 1px solid var(--rede-void);
+    color: var(--rede-azul-escuro);
+    border: 1px solid var(--rede-azul-escuro);
 }
 
-.icon{
+.icon {
     display: flex;
     align-items: center;
     margin-bottom: 3vh;
     margin-left: 29%;
-
 }
 
-.marcaRede{
+.marcaRede {
     font-size: 2vw;
     align-items: center;
 }
