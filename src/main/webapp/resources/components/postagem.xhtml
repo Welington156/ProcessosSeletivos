@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+<f:view>
+   <c:interface>
+      <c:attribute name="p" type="com.example.redesocial.dtos.PostagemDTO" />
+      <c:implementation>
+         <style type="text/css">
+            .lblCartCount {
+               position: relative;
+               font-size: 16px;
+               background: #8A2BE2 !important;
+               color: #fff;
+               padding: 0 5px;
+               vertical-align: top;
+               margin-left: -15px;
+               margin-bottom: 0;
+            }
+            .badge {
+               padding-left: 9px;
+               padding-right: 9px;
+               -webkit-border-radius: 9px;
+               -moz-border-radius: 9px;
+               border-radius: 9px;
+            }
+            .label-warning[href],
+            .badge-warning[href] {
+               background-color: #c67605;
+            }
+            .botaoLink:link{
+               text-decoration: none;
+               color:var(--rede-branco)
+            }
+
+         </style>
+         <div class="post">
+
+            <div class="post__avatar">
+               <img src="https://wp-content.bluebus.com.br/wp-content/uploads/2017/03/31142426/twitter-novo-avatar-padrao-2017-bluebus.png" alt="alt"/>
+            </div>
+
+            <div class="post__body">
+               <div class="post__header">
+                  <h3>
+                     <h:link includeViewParams="true"  value="#{cc.attrs.p.username}" outcome="usuario" >
+                        <f:param name="nickname" value="#{cc.attrs.p.username}"/>
+                     </h:link>
+                  </h3>
+                  <div class="post__headerDescription">
+                     <p>#{cc.attrs.p.postagem.conteudo}</p>
+                  </div>
+               </div>
+               <h:graphicImage
+                       rendered="#{cc.attrs.p.postagem.midias.size() != 0 }"
+                       url="#{cc.attrs.p.postagem.midias.get(0).link}?random=#{cc.attrs.p.postagem.id}"
+               />
+
+               <div class="post__footer">
+
+                  <h:form>
+                     <h:commandLink class="botaoLink" onclick="PF('resposta').show();">
+                        <p:ajax />
+                        <i class="material-symbols-outlined">rate_review</i>
+                        <span class="badge badge-warning lblCartCount">#{cc.attrs.p.qtdRespostas}</span>
+                     </h:commandLink>
+
+                     <p:dialog widgetVar="resposta" minHeight="400" >
+                        <h:inputText value="#{postagemController.conteudo}" a:placeholder="Responda esse otário!!" />
+                        <h:commandButton action="#{postagemController.responder(cc.attrs.p.postagem.id)}" value="Publicar" />
+                     </p:dialog>
+
+                  </h:form>
+
+                  <h:form>
+                     <h:commandLink class="botaoLink">
+                        <i class="material-icons">repeat</i>
+                     </h:commandLink>
+                  </h:form>
+                  <h:form>
+                     <h:commandLink class="botaoLink"
+                                    disabled="#{not usuarioSessionBean.authenticated}"
+                                    action="#{postagemController.atualizarCurtidas(cc.attrs.p)}">
+                        <p:ajax update="@form" />
+                        <i class="material-icons">favorite_border </i>
+                        <span class="badge badge-warning lblCartCount">#{cc.attrs.p.qtdCurtidas}</span>
+                     </h:commandLink>
+                  </h:form>
+
+               </div>
+            </div>
+         </div>
+      </c:implementation>
+   </c:interface>
+</f:view>
+</html>

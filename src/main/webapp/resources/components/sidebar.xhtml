@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+>
+<c:interface>
+    <c:attribute name="home" type="java.lang.Boolean" default="false" />
+    <c:attribute name="comunidades" type="java.lang.Boolean" default="false" />
+    <c:attribute name="perfil" type="java.lang.Boolean" default="false" />
+    <c:implementation>
+        <h:form class="sidebar">
+                <div class="icon">
+                    <i class="material-symbols-outlined">gamepadREDE</i>
+                </div>
+
+            <h:commandLink
+                    disabled="#{cc.attrs.home}"
+                    class="sair sidebarOption #{cc.attrs.home ? 'active' : ''}"
+                    action="#{pageController.goToHome()}">
+                <span class="material-symbols-outlined">diversity_3</span>
+                <h2>Home</h2>
+            </h:commandLink>
+
+            <h:commandLink
+                    disabled="#{cc.attrs.comunidades}"
+                    class="sair sidebarOption #{cc.attrs.comunidades ? 'active' : ''}"
+                    action="#{pageController.goToComunidades()}">
+                <span class="material-symbols-outlined">diversity_3</span>
+                <h2>Comunidades</h2>
+            </h:commandLink>
+
+            <h:commandLink
+                    disabled="#{cc.attrs.perfil}"
+                    class="sair sidebarOption #{cc.attrs.perfil ? 'active' : ''}"
+                    action="#{pageController.goToPerfil()}">
+                <span class="material-icons">person</span>
+                <h2>Perfil</h2>
+            </h:commandLink>
+
+
+            <div class="sidebarOption sidebarOption__tema" >
+                <h:selectBooleanCheckbox class="checkBox__theme" value="#{usuarioSessionBean.darkMode}">
+                    <f:ajax render="@all" event="change" />
+                </h:selectBooleanCheckbox>
+                <h2>Tema</h2>
+            </div>
+
+                <div class="sidebarOption sidebar__encerrar">
+                    <h:commandLink class="sair" action="#{usuarioSessionBean.desconectar()}" rendered="#{usuarioSessionBean.authenticated}">
+                        <span class="material-symbols-outlined">login</span>
+                        <h2>#{'Encerrar Sessão'}</h2>
+                    </h:commandLink>
+
+                    <h:commandLink class="sair" action="#{pageController.goToLogin()}" rendered="#{not usuarioSessionBean.authenticated}">
+                        <span class="material-symbols-outlined">login</span>
+                        <h2>#{'Iniciar Sessão'}</h2>
+                    </h:commandLink>
+                </div>
+        </h:form>
+    </c:implementation>
+</c:interface>
+
+
+</html>

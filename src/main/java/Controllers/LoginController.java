@@ -4,8 +4,9 @@
  */
 package controllers;
 
-import Usuario.UsuarioServiceLocal;
+
 import Beans.UsuarioSessionBean;
+import Usuario.UsuarioServiceLocal;
 import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -36,10 +37,10 @@ public class LoginController {
     PageController pageController;
 
     @NotEmpty
-    private String email = "admin@gmail.com";
+    private String email ;
 
     @NotEmpty
-    private String password = "senha123";
+    private String password ;
 
     @Inject
     FacesContext facesContext;
@@ -80,7 +81,7 @@ public class LoginController {
                 break;
             case SUCCESS:
                 saveUserInSession();
-                pageController.goToHome();
+                pageController.goToCadastrar();
                 break;
         }
     }

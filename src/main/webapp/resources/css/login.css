@@ -1,0 +1,56 @@
+body{
+    --rede-rosa: #A239CA;
+    --rede-void: #0E0B16;
+    --rede-roxo: #8A2BE2;
+    --rede-cinza: #bbbbbb;
+    --rede-branco: white;
+    --rede-void2: #0E0B16;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(45deg,var(--rede-void), var(--rede-roxo));
+}
+
+.login__panel{
+    background-color: var(--rede-branco);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 4vw;
+    border-radius: 30px;
+}
+
+body .ui-inputfield.ui-state-hover{
+    border-color: var(--rede-rosa);
+}
+
+body .ui-inputfield.ui-state-focus{
+    border-color: var(--rede-roxo);
+    box-shadow: var(--rede-roxo) 2em;
+}
+
+body .ui-button{
+    background-color: var(--rede-roxo);
+    border: 1px solid var(--rede-void);
+}
+
+body .ui-button:hover{
+    background-color: var(--rede-cinza);
+    color: var(--rede-void);
+    border: 1px solid var(--rede-void);
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+    margin-bottom: 3vh;
+    margin-left: 29%;
+
+}
+
+.marcaRede{
+    font-size: 2vw;
+    align-items: center;
+}

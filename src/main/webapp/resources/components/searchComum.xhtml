@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsf/composite"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <c:interface>
+        <f:view>
+            <f:metadata>
+                <f:viewParam name="nickname" value="#{usuarioController.nickname}" />
+                <f:viewParam name="" />
+            </f:metadata>
+        </f:view>
+        <c:attribute name="value" type="com.example.redesocial.dtos.SearchItemDTO" required="true"/>
+        <c:attribute name="action" type="javax.el.MethodExpression" />
+        <c:clientBehavior name="itemSelect" targets="acSimple" event="itemSelect" />
+
+        <c:implementation>
+            <style type="text/css">
+                .item-sel {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            </style>
+            <div>
+                <span class="material-icons widgets__searchIcon">search</span>
+                <p:autoComplete  id="acSimple"
+                                 completeMethod="#{searchController.search}"
+                                 value="#{cc.attrs.value}"
+                                 itemValue="#{item}"
+                                 itemLabel="#{item.nome}"
+                                 scrollHeight="250"
+                                 var="item"
+                                 styleClass="widgets__input"
+                                 inputStyle="width: 400px"
+                                 emptyMessage="Nenhum resultado :("
+                                 converter="searchItemConverter"
+                                 >
+                    <p:column styleClass="item-sel" exportValue="" >
+                    </p:column>
+                </p:autoComplete>
+            </div>
+        </c:implementation>
+    </c:interface>
+</html>

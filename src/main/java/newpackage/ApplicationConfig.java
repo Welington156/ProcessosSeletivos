@@ -20,10 +20,10 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
  */
 @Named
 @DatabaseIdentityStoreDefinition(
-        dataSourceLookup = "java:/RedeSocialDS",
+        dataSourceLookup = "java:/ProcessosSeletivosDS",
         callerQuery = "select c.senha from usuario u LEFT JOIN credencial c ON c.id = u.credencial_id "
         + "where c.email = ?",
-        groupsQuery = "select c.tipoPerfil from usuario u LEFT JOIN credencial c ON c.id = u.credencial_id "
+        groupsQuery = "select c.perfil from usuario u LEFT JOIN credencial c ON c.id = u.credencial_id "
         + "where c.email = ?",
         hashAlgorithm = Pbkdf2PasswordHash.class,
         hashAlgorithmParameters = {

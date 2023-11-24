@@ -32,7 +32,7 @@
 
     <security-role>
         <description>Common authenticated user</description>
-        <role-name>USUARIO_PADRAO</role-name>
+        <role-name>CANDIDATO</role-name>
     </security-role>
 
     <security-constraint>
@@ -50,12 +50,10 @@
         <display-name>User Role</display-name>
         <web-resource-collection>
             <web-resource-name>Profile Page</web-resource-name>
-            <url-pattern>/app/*</url-pattern>
+            <url-pattern>/login/*</url-pattern>
+            <url-pattern>/index.xhtml</url-pattern>
         </web-resource-collection>
-        <auth-constraint>
-            <role-name>ADMINISTRADOR</role-name>
-            <role-name>USUARIO_PADRAO</role-name>
-        </auth-constraint>
+         
     </security-constraint>
 
     <session-config>
@@ -66,7 +64,7 @@
 
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
-        <welcome-file>login.xhtml</welcome-file>
+        
     </welcome-file-list>
 
     <error-page>

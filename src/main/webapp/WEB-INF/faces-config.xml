@@ -6,12 +6,12 @@
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>usuario</from-outcome>
-            <to-view-id>/usuario/index.xhtml</to-view-id>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>comunidade</from-outcome>
-            <to-view-id>/comunidades/comunidade.xhtml</to-view-id>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login/index.xhtml</to-view-id>
         </navigation-case>
 
     </navigation-rule>
