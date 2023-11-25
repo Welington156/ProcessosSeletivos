@@ -25,9 +25,9 @@
             <h:form>
                 <p:messages globalOnly="true"/>
                 <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
-                    <p:outputLabel for="nome" value="Nome"/>
-                    <p:inputText class="inputLogin__user" id="nome" value="#{loginController.email}"/>
-                    <p:message for="nome"/>
+                    <p:outputLabel for="email" value="Email"/>
+                    <p:inputText class="inputLogin__user" id="email" value="#{loginController.email}"/>
+                    <p:message for="email"/>
 
                     <p:outputLabel for="password" value="Password"/>
                     <p:inputText class="inputLogin__pass" id="password" value="#{loginController.password}" type="password"/>
@@ -39,6 +39,7 @@
                         value="Login"
                         action="#{loginController.execute}"
                         ajax="false"/>
+                    
                     <p:commandButton
                         id="submit2"
                         value="Cadastre-se"

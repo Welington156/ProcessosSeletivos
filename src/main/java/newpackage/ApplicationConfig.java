@@ -16,7 +16,7 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 /**
  *
- * @author andre-barros
+ * @author welin
  */
 @Named
 @DatabaseIdentityStoreDefinition(

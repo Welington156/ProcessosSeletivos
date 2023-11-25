@@ -27,7 +27,7 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  *
- * @author andre-barros
+ * @author welin
  */
 @Named
 @RequestScoped
@@ -81,7 +81,7 @@ public class LoginController {
                 break;
             case SUCCESS:
                 saveUserInSession();
-                pageController.goToCadastrar();
+                pageController.goToHome();
                 break;
         }
     }
