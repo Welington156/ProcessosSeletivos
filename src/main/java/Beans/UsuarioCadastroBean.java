@@ -20,7 +20,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Tygsv
+ * @author cauaq
  */
 @Named
 @RequestScoped
@@ -37,6 +37,9 @@ public class UsuarioCadastroBean {
     private String nascimento;
     private Long telefone;
     private Perfil perfil;
+
+    
+    
     
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public UsuarioServiceLocal getUsuarioService(){
@@ -107,7 +110,10 @@ public class UsuarioCadastroBean {
 
     //</editor-fold>
     public void cadastrar() throws IOException {
-        Credencial user = new Credencial(email, password,perfil.CANDIDATO);
+        if(perfil == null){
+            perfil = Perfil.CANDIDATO;
+        }
+        Credencial user = new Credencial(email, password,perfil);
         Usuario novo = new Usuario(nome,LocalDate.parse(nascimento), telefone, user);
         
         usuarioService.persist(novo);

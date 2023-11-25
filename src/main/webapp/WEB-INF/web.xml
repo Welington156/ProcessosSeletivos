@@ -31,10 +31,16 @@
     </security-role>
 
     <security-role>
-        <description>Common authenticated user</description>
+        <description>Candidato authenticated user</description>
         <role-name>CANDIDATO</role-name>
     </security-role>
-
+    
+    <security-role>
+        <description>Editor authenticated user</description>
+        <role-name>EDITOR</role-name>
+    </security-role>
+    
+    
     <security-constraint>
         <display-name>Admin Role</display-name>
         <web-resource-collection>
@@ -43,6 +49,28 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>ADMINISTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Editor Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>All Editor Pages</web-resource-name>
+            <url-pattern>/editor/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>EDITOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Candidato Role</display-name>
+        <web-resource-collection>
+            <web-resource-name>All Editor Pages</web-resource-name>
+            <url-pattern>/candidato/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>CANDIDATO</role-name>
         </auth-constraint>
     </security-constraint>
 

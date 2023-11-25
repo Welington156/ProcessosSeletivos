@@ -6,6 +6,9 @@ package controllers;
 
 
 import Beans.UsuarioSessionBean;
+import Usuario.Credencial;
+import Usuario.Perfil;
+import Usuario.Usuario;
 import Usuario.UsuarioServiceLocal;
 import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
@@ -81,10 +84,25 @@ public class LoginController {
                 break;
             case SUCCESS:
                 saveUserInSession();
-                pageController.goToHome();
+                redirectToAppropriatePage();
                 break;
         }
     }
+    
+private void redirectToAppropriatePage() throws IOException {
+    Usuario usuario = usuarioService.buscarPorEmail(email);
+    Credencial credencial = usuario.getCredencial(); 
+    Perfil perfil = credencial.getPerfil();
+    
+    if (Perfil.ADMINISTRADOR.equals(perfil)) {
+        pageController.goToAdmin();
+    } else if (Perfil.CANDIDATO.equals(perfil)) {
+        pageController.goToCandidato();
+    } else if (Perfil.EDITOR.equals(perfil)){
+        pageController.goToEditor();
+    }
+}
+
 
     private void saveUserInSession() {
         usuarioSession.conectar(usuarioService.buscarPorEmail(email));
