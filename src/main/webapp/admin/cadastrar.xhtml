@@ -2,12 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
-   <meta charset="UTF-8" />
-        <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cadastro</title>
         <link rel="stylesheet" href="../resources/css/login.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -16,48 +18,48 @@
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"    
               integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
               crossorigin="anonymous" />
-</h:head>
-<h:body>
 
-    <div class="login__panel">
-        
-        <div class="icon">
-            <i class="material-symbols-outlined marcaRede">schoolENEM</i> 
-        </div>
+        <h:outputStylesheet name="/resources/css/default.css"/>
+        <h:outputStylesheet name="/resources/css/cssLayout.css"/>
+    </h:head>
 
-       <h:form>
-    <p:messages globalOnly="true"/>
-    <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+    <h:body>
 
-        <p:outputLabel for="nome" value="Nome"/>
-        <p:inputText class="inputLogin__user" id="nome" value="#{usuarioCadastroBean.nome}" a:placeholder="Nome"/>
-        <p:message for="nome"/>
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
 
-        <p:outputLabel for="email" value="Email"/>
-        <p:inputText class="inputLogin__user" id="email" value="#{usuarioCadastroBean.email}" a:placeholder="Email" type="email" maxlength="40" />
-        <p:message for="email"/>
+        <div class="login__panel">
+            <div class="icon">
+                <i class="material-symbols-outlined marcaRede">schoolIFNMG</i> 
+            </div>
+            <h:form id="cadastroForm" prependId="false">
+                <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                    <p:outputLabel for="nome" value="Nome"/>
+                    <p:inputText class="inputLogin__user" id="nome" value="#{usuarioCadastroBean.nome}" a:placeholder="Nome" required="true"/>
+                    <p:message for="nome"/>
 
-        <p:outputLabel for="password" value="Password"/>
-        <p:inputText class="inputLogin__pass" id="password" value="#{usuarioCadastroBean.password}" a:placeholder="Senha" type="password"/>
-        <p:message for="password"/>
+                    <p:outputLabel for="email" value="Email"/>
+                    <p:inputText class="inputLogin__user" id="email" value="#{usuarioCadastroBean.email}" a:placeholder="Email" type="email" maxlength="40" required="true"/>
+                    <p:message for="email"/>
 
-        <p:outputLabel for="nascimento" value="Nascimento"/>
-        <p:inputText class="inputLogin__pass" id="nascimento" value="#{usuarioCadastroBean.nascimento}" type="date"/>
-        <p:message for="nascimento"/>
+                    <p:outputLabel for="password" value="Password"/>
+                    <p:inputText class="inputLogin__pass" id="password" value="#{usuarioCadastroBean.password}" a:placeholder="Senha" type="password" required="true"/>
+                    <p:message for="password"/>
 
-        <p:outputLabel for="telefone" value="Telefone"/>
-        <p:inputText class="inputLogin__pass" id="telefone" value="#{usuarioCadastroBean.telefone}" a:placeholder="(__)____-____" type="tel">
-        </p:inputText>
-        <p:message for="telefone"/>
+                    <p:outputLabel for="nascimento" value="Nascimento"/>
+                    <p:inputText class="inputLogin__pass" id="nascimento" value="#{usuarioCadastroBean.nascimento}" type="date" required="true"/>
+                    <p:message for="nascimento"/>
 
-        <p:outputLabel for="perfil" value="Perfil"/>
-        <p:selectOneMenu id="perfil" value="#{usuarioCadastroBean.perfil}">
-            <f:selectItem itemLabel="Selecione um perfil" itemValue="" />
-            <f:selectItem itemLabel="Administrador" itemValue="ADMINISTRADOR" />
-            <f:selectItem itemLabel="Editor" itemValue="EDITOR" />
-            <f:selectItem itemLabel="Candidato" itemValue="CANDIDATO" />
-            
-            <!-- Adicione mais opções de perfil conforme necessário -->
+                    <p:outputLabel for="telefone" value="Telefone"/>
+                    <p:inputText class="inputLogin__pass" id="telefone" value="#{usuarioCadastroBean.telefone}" a:placeholder="(__)____-____" type="tel" required="true"/>
+                    <p:message for="telefone"/>
+
+                    <p:outputLabel for="perfil" value="Perfil"/>
+                    <p:selectOneMenu id="perfil" value="#{usuarioCadastroBean.perfil}">
+                        <f:selectItem itemLabel="Selecione um perfil" itemValue="" />
+                        <f:selectItem itemLabel="Administrador" itemValue="ADMINISTRADOR" />
+                        <f:selectItem itemLabel="Editor" itemValue="EDITOR" />
+                        <f:selectItem itemLabel="Candidato" itemValue="CANDIDATO" />
+                        
         </p:selectOneMenu>
 
     </h:panelGrid>
@@ -67,11 +69,7 @@
                 value="Cadastrar"
                 action="#{usuarioCadastroBean.cadastrar()}"
                 ajax="false"/>
-        <p:commandButton
-                id="submit2"
-                value="Já Possui Cadastro ?"
-                action="#{pageController.goToLogin()}"
-                ajax="false"/>
+
     </h:panelGrid>
 </h:form>
     </div>

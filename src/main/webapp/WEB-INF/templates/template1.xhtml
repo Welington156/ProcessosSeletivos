@@ -7,31 +7,44 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+
+        <style>
+            .right-align {
+                margin-left: auto;
+            }
+        </style>
         <title>Plataforma de Processos Seletivos</title>
-        <h:form>
-            <p:menubar>
-                <p:menuitem value="Início" icon="pi pi-home" outcome="/index.xhtml" />
-<!--                <p:menuitem value="Área do Candidato" icon="pi pi-user" outcome="/candidato"/>
-                <p:menuitem value="Processos Seletivos" icon="pi pi-list" outcome="/cadastrar" />-->
-            </p:menubar>
-        </h:form>
     </h:head>
 
     <h:body>
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Início" icon="pi pi-home" outcome="/index.xhtml" />
+                <p:menuitem value="Notícias" icon="pi pi-bookmark" outcome="/noticias/index.xhtml"/>
+                <p:menuitem value="Processos Seletivos" icon="pi pi-list" outcome="/processosseletivos/index.xhtml" />
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+                <p:menuitem styleClass="right-align" value="#{usuarioSessionBean.authenticated ? 'Minha Conta' : 'Login'}" icon="pi pi-user" outcome="#{usuarioSessionBean.authenticated ? '/index.xhtml' : '/login/index.xhtml'}" />
+                
+                <p:menuitem styleClass="right-align" rendered="#{usuarioSessionBean.authenticated}" value="Logout" icon="pi pi-power-off" action="#{usuarioSessionBean.desconectar}" />
+            </p:menubar>
+            
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+            </div>
 
-<!--        <div id="footer">
-            <ui:insert name="footer">&copy; 2023 Plataforma ENEM. Todos os direitos reservados.
-            </ui:insert>
-        </div>-->
-        
-    </h:body> 
+            <div id="content" class="center_content">
+                <ui:insert name="content"></ui:insert>
+            </div>
+
+            <!-- Seção de footer comentada, pois não está sendo utilizada na sua página de login -->
+            <!--<div id="footer">
+                <ui:insert name="footer">&copy; 2023 Plataforma ENEM. Todos os direitos reservados.
+                </ui:insert>
+            </div>-->
+            
+            
+            
+            
+        </h:form>
+    </h:body>
 </html>
