@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Plataforma de Processos Seletivos</title>
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Início" icon="pi pi-home" outcome="/index.xhtml" />
+<!--                <p:menuitem value="Área do Candidato" icon="pi pi-user" outcome="/candidato"/>
+                <p:menuitem value="Processos Seletivos" icon="pi pi-list" outcome="/cadastrar" />-->
+            </p:menubar>
+        </h:form>
+    </h:head>
+
+    <h:body>
+        <div id="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+<!--        <div id="footer">
+            <ui:insert name="footer">&copy; 2023 Plataforma ENEM. Todos os direitos reservados.
+            </ui:insert>
+        </div>-->
+        
+    </h:body> 
+</html>
