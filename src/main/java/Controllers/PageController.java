@@ -42,6 +42,9 @@ public class PageController {
     public void goToAdminCadastro() throws IOException{
         redirect("/admin/cadastrar.xhtml");
     }
+    public void goToCadastrarPostagem() throws IOException{
+        redirect("/noticias/cadastrar.xhtml");
+    }
         //</editor-fold>
     
     public void redirect(String url) throws IOException {

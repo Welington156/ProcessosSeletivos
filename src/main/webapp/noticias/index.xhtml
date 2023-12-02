@@ -2,12 +2,25 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="../WEB-INF/templates/template1.xhtml">
+                template="../WEB-INF/templates/template1.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h1>Página Inicial de noticias</h1>
-        <p>Bem-vindo à sua página de noticias</p>
+        <h1>Página Inicial de Notícias</h1>
+        <p>Bem-vindo à sua página de notícias</p>
 
+        <h2>Lista de Postagens:</h2>
+        <ul>
+            <ui:repeat value="#{postagemController.postagens}" var="postagem">
+                <li>
+                    <h:outputText value="#{postagem.titulo}" /> -
+                    <h:outputText value="#{postagem.conteudo}" />
+                </li>
+            </ui:repeat>
+        </ul>
+
+        
     </ui:define>
 
 </ui:composition>

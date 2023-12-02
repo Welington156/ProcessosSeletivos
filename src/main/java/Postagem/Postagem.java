@@ -16,12 +16,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author welin
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "findPostagens",
+            query = "SELECT p FROM Postagem p"
+    )
+})
 public class Postagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +65,8 @@ public class Postagem implements Serializable {
     public Postagem() {
     }
 
+    
+    //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
     public Long getId() {
         return id;
     }
@@ -116,6 +126,7 @@ public class Postagem implements Serializable {
     public String getDataPublicacao() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+        
+    //</editor-fold>
     
 }

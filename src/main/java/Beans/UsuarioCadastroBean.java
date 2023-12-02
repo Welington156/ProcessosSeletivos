@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Beans;
 
 
@@ -109,6 +106,8 @@ public class UsuarioCadastroBean {
     }
 
     //</editor-fold>
+    
+    
     public void cadastrar() throws IOException {
         if(perfil == null){
             perfil = Perfil.CANDIDATO;

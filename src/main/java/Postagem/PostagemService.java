@@ -1,54 +1,30 @@
 package Postagem;
-
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author welin
+ * @author cauaq
  */
-@Entity
-public class PostagemService implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@Stateless
+public class PostagemService implements PostagemServiceLocal {
 
-    public Long getId() {
-        return id;
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public List<Postagem> findPostagens() {
+        return entityManager.createNamedQuery("findPostagens", Postagem.class).getResultList();
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public void persist(Postagem postagem) {
+        entityManager.persist(postagem);
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PostagemService)) {
-            return false;
-        }
-        PostagemService other = (PostagemService) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+    // Adicione outros métodos conforme necessário
 
-    @Override
-    public String toString() {
-        return "Postagem.PostagemService[ id=" + id + " ]";
-    }
-    
 }

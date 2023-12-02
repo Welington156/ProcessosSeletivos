@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cadastro de Postagem</title>
+        <link rel="stylesheet" href="../resources/css/login.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"    
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous" />
+
+        <h:outputStylesheet name="/resources/css/default.css"/>
+        <h:outputStylesheet name="/resources/css/cssLayout.css"/>
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+
+        <div class="login__panel">
+            <div class="icon">
+                <i class="material-symbols-outlined marcaRede">schoolIFNMG</i> 
+            </div>
+            <h:form id="cadastroPostagemForm" prependId="false">
+                <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                    <p:outputLabel for="titulo" value="Título"/>
+                    <p:inputText  class="inputLogin__user" id="titulo" value="#{postagemCadastroBean.titulo}" a:placeholder="Título" required="true"/>
+                    <p:message for="titulo"/>
+
+                    <p:outputLabel for="datapublicacao" value="Data de Publicação"/>
+                    <p:inputText class="inputLogin__user" id="datapublicacao" value="#{postagemCadastroBean.datapublicacao}" a:placeholder="Data de Publicação" type="date" required="true"/>
+                    <p:message for="datapublicacao"/>
+
+                    <p:outputLabel for="conteudo" value="Conteúdo"/>
+                    <!-- Utilizando p:textEditor -->
+                    <p:inputTextarea id="conteudo" rows="5" cols="30" value="#{postagemCadastroBean.conteudo}"   required="true"/>
+                    <p:message for="conteudo"/>
+
+                    <p:outputLabel for="dataedicao" value="Data de Edição"/>
+                    <p:inputText class="inputLogin__user" id="dataedicao" value="#{postagemCadastroBean.dataedicao}" a:placeholder="Data de Edição" type="date"/>
+                    <p:message for="dataedicao"/>
+
+                    <p:outputLabel for="publicacao" value="Publicação"/>
+                    <p:selectOneMenu id="publicacao" value="#{postagemCadastroBean.publicacao}">
+                        <f:selectItem itemLabel="Selecione um tipo de publicacao" itemValue="" />
+                        <f:selectItem itemLabel="EDITAL" itemValue="EDITAL" />
+                        <f:selectItem itemLabel="NOTICIA" itemValue="NOTICIA" />
+                        <f:selectItem itemLabel="ORIENTACAO" itemValue="ORIENTACAO" />
+                        <f:selectItem itemLabel="GABARITO" itemValue="GABARITO" />
+                        <f:selectItem itemLabel="PROVA" itemValue="PROVA" />
+                    </p:selectOneMenu>
+                    <p:message for="publicacao"/>
+
+                    <p:commandButton
+                        id="submit"
+                        value="Cadastrar"
+                        action="#{postagemCadastroBean.cadastrar()}"
+                        ajax="false"/>
+                </h:panelGrid>
+                <!-- Adicione mensagens adicionais conforme necessário -->
+            </h:form>
+        </div>
+    </h:body>
+</html>
