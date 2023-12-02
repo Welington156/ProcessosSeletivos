@@ -8,6 +8,6 @@ package Beans;
  *
  * @author cauaq
  */
-interface DadosIniciaisBeanLocal {
+interface CargaDadosBeanLocal {
     void init();
 }

@@ -27,8 +27,8 @@ import javax.persistence.PersistenceContext;
  */
 @Startup
 @Singleton
-public class DadosIniciaisBean
-        implements DadosIniciaisBeanLocal {
+public class CargaDadosBean
+        implements CargaDadosBeanLocal {
 
     @Inject
     UsuarioServiceLocal usuarioService;
@@ -48,7 +48,8 @@ public class DadosIniciaisBean
     private void carregarDados() {
         Usuario usuario1 = cadastrarUsuario("Nome1", "email1@example.com", "senha1", Perfil.CANDIDATO, LocalDate.of(1990, 1, 1), 123456789L);
         Usuario usuario2 = cadastrarUsuario("Nome2", "email2@example.com", "senha2", Perfil.ADMINISTRADOR, LocalDate.of(1995, 5, 5), 987654321L);
-
+        Usuario usuario3 = cadastrarUsuario("Nome3", "email3@example.com", "senha3", Perfil.EDITOR, LocalDate.of(1999, 10, 5), 987654321L);
+        
         // Criação de Processo Seletivo
         ProcessoSeletivo processo1 = new ProcessoSeletivo(
                 LocalDate.of(2023, 1, 1),
@@ -67,14 +68,22 @@ public class DadosIniciaisBean
                 LocalDate.of(2023, 4, 1),
                 "Processo 2",
                 true,
-                usuario2,
+                usuario1,
                 LocalDate.of(2023, 3, 15),
                 LocalDate.of(2023, 4, 1),
                 LocalDate.of(2023, 4, 15),
                 "Edital 2",
                 null // membros serão adicionados posteriormente
         );
-
+        Postagem postagem = new Postagem(
+            "Postagem1",
+            LocalDate.now(),
+            usuario3,
+            "Conteúdo da Postagem",
+            null,
+            Publicacao.NOTICIA
+    );
+        entityManager.persist(postagem);
         entityManager.persist(processo1);
         entityManager.persist(processo2);
 
@@ -92,7 +101,7 @@ public class DadosIniciaisBean
         Postagem postagem1 = new Postagem(
                 "Título da Postagem 1",
                 LocalDate.of(2023, 1, 10),
-                usuario1,
+                usuario3,
                 "Conteúdo da Postagem 1",
                 null,
                 Publicacao.EDITAL
@@ -101,7 +110,7 @@ public class DadosIniciaisBean
         Postagem postagem2 = new Postagem(
                 "Título da Postagem 2",
                 LocalDate.of(2023, 2, 15),
-                usuario2,
+                usuario3,
                 "Conteúdo da Postagem 2",
                 null,
                 Publicacao.EDITAL
