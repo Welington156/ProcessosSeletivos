@@ -1,6 +1,7 @@
 package Beans;
 
 import Usuario.Usuario;
+import Usuario.UsuarioService;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -20,6 +21,8 @@ public class UsuarioSessionBean implements Serializable {
     @Inject
     SecurityContext securityContext;
 
+    
+    
     private Usuario usuario;
 
     public void conectar(Usuario u) {
@@ -35,8 +38,20 @@ public class UsuarioSessionBean implements Serializable {
         externalContext.invalidateSession();
         String path = externalContext.getApplicationContextPath();
         externalContext.redirect(path + "/login");
-
     }
+    
+    public void salvarAlteracoes() {
+    // Lógica para obter o usuário atualizado com as alterações
+    Usuario usuarioAtualizado = getUsuario();
+
+    // Chama o serviço para atualizar o usuário no banco de dados
+    // Agora, o serviço é acessado diretamente pela página minhaConta.xhtml
+    // sem ser injetado no UsuarioSessionBean
+    new UsuarioService().atualizarUsuario(usuarioAtualizado);
+
+    // Atualiza o usuário na sessão (opcional, dependendo da sua implementação)
+    setUsuario(usuarioAtualizado);
+}
 
     // <editor-fold  defaultstate="collapsed" desc="Getters/Setters" >
     public Usuario getUsuario() {
@@ -45,6 +60,14 @@ public class UsuarioSessionBean implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public String getNome(){
+        return (usuario != null) ? usuario.getNome() : null;
+    }
+    
+    public String getEmail() {
+        return (usuario != null) ? usuario.getEmail() : null;
     }
 
     // </editor-fold>

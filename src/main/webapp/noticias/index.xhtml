@@ -1,26 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="../WEB-INF/templates/template1.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="content">
-        <h1>Página Inicial de Notícias</h1>
-        <p>Bem-vindo à sua página de notícias</p>
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lista de Postagens</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <!-- Adicione seus estilos e scripts conforme necessário -->
+    </h:head>
 
-        <h2>Lista de Postagens:</h2>
-        <ul>
+    <h:body>
+
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+
+        <div class="container mt-5">
+            <h1>Lista de Postagens</h1>
+
+            <!-- Exibição das postagens -->
             <ui:repeat value="#{postagemController.postagens}" var="postagem">
-                <li>
-                    <h:outputText value="#{postagem.titulo}" /> -
-                    <h:outputText value="#{postagem.conteudo}" />
-                </li>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">#{postagem.titulo}</h5>
+                        <p class="card-text">Data de Publicação: #{postagem.datapublicacao}</p>
+                        <p class="card-text">Autor: #{postagem.autor.nome}</p>
+                        <p class="card-text">Conteúdo: #{postagem.conteudo}</p>
+                        <p class="card-text">Data de Edição: #{postagem.dataedicao}</p>
+                        <p class="card-text">Tipo de Publicação: #{postagem.publicacao}</p>
+                        <!-- Adicione outros campos conforme necessário -->
+                    </div>
+                </div>
             </ui:repeat>
-        </ul>
+        </div>
 
-        
-    </ui:define>
-
-</ui:composition>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </h:body>
+</html>

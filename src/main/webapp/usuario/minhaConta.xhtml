@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/WEB-INF/templates/template1.xhtml">
+        <ui:define name="content">
+            <h2>Minha Conta</h2>
+
+            <h:form id="minhaContaForm">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome:" />
+                    <h:outputText value="#{usuarioSessionBean.nome}" />
+
+                    <h:outputLabel value="Email:" />
+                    
+                    <p:inputText id="email" value="#{usuarioSessionBean.email}" required="true" />
+                </h:panelGrid>
+
+                <p:commandButton value="Salvar" action="#{usuarioSessionBean.salvarAlteracoes}" ajax="false" />
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

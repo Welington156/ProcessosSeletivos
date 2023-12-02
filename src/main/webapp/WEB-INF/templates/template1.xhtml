@@ -23,7 +23,9 @@
                 <p:menuitem value="Notícias" icon="pi pi-bookmark" outcome="/noticias/index.xhtml"/>
                 <p:menuitem value="Processos Seletivos" icon="pi pi-list" outcome="/processosseletivos/index.xhtml" />
 
-                <p:menuitem styleClass="right-align" value="#{usuarioSessionBean.authenticated ? 'Minha Conta' : 'Login'}" icon="pi pi-user" outcome="#{usuarioSessionBean.authenticated ? '/index.xhtml' : '/login/index.xhtml'}" />
+                 <p:menuitem styleClass="right-align" rendered="#{usuarioSessionBean.authenticated}" value="Minha Conta" icon="pi pi-user" outcome="#{usuarioSessionBean.authenticated ? '/usuario/minhaConta.xhtml' : null}" />
+
+    <p:menuitem styleClass="right-align" rendered="#{!usuarioSessionBean.authenticated}" value="Login" icon="pi pi-sign-in" outcome="/login/index.xhtml" />
                 
                 <p:menuitem styleClass="right-align" rendered="#{usuarioSessionBean.authenticated}" value="Logout" icon="pi pi-power-off" action="#{usuarioSessionBean.desconectar}" />
             </p:menubar>

@@ -49,5 +49,10 @@ public class UsuarioService implements Serializable, UsuarioServiceLocal{
             return null;
         }
     }
+
+    @Transactional
+    public void atualizarUsuario(Usuario usuario) {
+        em.merge(usuario);
+    }
     
 }
