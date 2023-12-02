@@ -13,6 +13,16 @@
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
     </context-param>
+    
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+        <param-value>6Ld9JyEpAAAAAB4Plx5ym2mNkEQbJAWrYrA9qj3n</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6Ld9JyEpAAAAANBeiXNoK-KJBRvgIBIhDvjRIgAj</param-value>
+    </context-param>
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

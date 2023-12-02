@@ -52,7 +52,17 @@
                         action="#{pageController.goToCadastrar()}"
                         ajax="false"
                         immediate="true"/>
+                    
+                   <p:captcha 
+                            id="captcha"
+                            label="Captcha" 
+                            language="pt-BR"
+                            theme="light"
+                            size="normal"
+                            requiredMessage="Você é um robô? Se não for, marque o captcha. ;)" />
                 </h:panelGrid>
+                 <p:messages
+                        for="captcha"/>
             </h:form>
         </div>
     </h:body>
