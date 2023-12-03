@@ -19,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,6 +28,12 @@ import javax.persistence.OneToMany;
  * @author welin
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "findProcessoSeletivo",
+            query = "SELECT p FROM ProcessoSeletivo p"
+    )
+})
 public class ProcessoSeletivo implements Serializable {
 
     private static final long serialVersionUID = 1L;
