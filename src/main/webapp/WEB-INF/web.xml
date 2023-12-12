@@ -109,4 +109,16 @@
         <error-code>403</error-code>
         <location>/WEB-INF/templates/forbidden.xhtml</location>
     </error-page>
+    
+    
+    <servlet>
+    <servlet-name>MostrarDadosServlet</servlet-name>
+    <servlet-class>servlet.MostrarDadosServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>MostrarDadosServlet</servlet-name>
+    <url-pattern>/mostrar-dados</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
