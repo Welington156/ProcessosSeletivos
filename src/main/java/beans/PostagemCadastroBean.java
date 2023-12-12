@@ -33,7 +33,7 @@ public class PostagemCadastroBean implements Serializable {
     private String datapublicacao;
     private Usuario autor;
     private String conteudo;
-    private LocalDate dataedicao;
+    private String dataedicao;
     private Publicacao publicacao;
 
     //<editor-fold defaultstate="collapsed" desc="Getters/Setters">
@@ -103,13 +103,15 @@ public class PostagemCadastroBean implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public LocalDate getDataedicao() {
+    public String getDataedicao() {
         return dataedicao;
     }
 
-    public void setDataedicao(LocalDate dataedicao) {
+    public void setDataedicao(String dataedicao) {
         this.dataedicao = dataedicao;
     }
+
+    
 
     public Publicacao getPublicacao() {
         return publicacao;
@@ -133,7 +135,7 @@ public class PostagemCadastroBean implements Serializable {
             autor = usuarioSessionBean.getUsuario();
         }
 
-        Postagem novaPostagem = new Postagem(titulo, LocalDate.parse(datapublicacao), autor, conteudo, dataedicao, publicacao);
+        Postagem novaPostagem = new Postagem(titulo, LocalDate.parse(datapublicacao), autor, conteudo, LocalDate.parse(dataedicao), publicacao);
         System.out.println("Entrou aqui");
         postagemService.persist(novaPostagem);
 

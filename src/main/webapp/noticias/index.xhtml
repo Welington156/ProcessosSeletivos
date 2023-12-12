@@ -17,10 +17,21 @@
     <h:body>
 
         <ui:include src="../WEB-INF/templates/template1.xhtml" />
-
+        
+        
+        
+        
         <div class="container mt-5">
+            
+            <h:form>
+            <!-- Botão de Cadastro para Usuários do Tipo "Editor" -->
+            <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary mb-3" />
+        </h:form>
+            
             <h1>Lista de Postagens</h1>
-
+            
+            
+            
             <!-- Exibição das postagens -->
             <ui:repeat value="#{postagemController.postagens}" var="postagem">
                 <div class="card mt-3">

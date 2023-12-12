@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lista de Processos Seletivos</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-        
+
     </h:head>
 
     <h:body>
@@ -19,6 +19,12 @@
         <ui:include src="../WEB-INF/templates/template1.xhtml" />
 
         <div class="container mt-5">
+
+            <h:form>
+                <!-- Botão de Cadastro para Usuários do Tipo "Editor" -->
+                <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary mb-3" />
+            </h:form>
+
             <h1>Lista de Processos Seletivos</h1>
 
             <!-- Exibição dos processos seletivos -->
@@ -28,11 +34,21 @@
                         <h5 class="card-title">#{processoSeletivo.titulo}</h5>
                         <p class="card-text">Data de Início: #{processoSeletivo.dataInicio}</p>
                         <p class="card-text">Data de Fim: #{processoSeletivo.dataFim}</p>
-                        <p class="card-text">Criador: #{processoSeletivo.criador.nome}</p>
+                        <p class="card-text">Ativo: #{processoSeletivo.ativo ? 'Sim' : 'Não'}</p>
+                        <p class="card-text">Criador: #{empty processoSeletivo.criador ? 'N/A' : processoSeletivo.criador.nome}</p>
+                        <p class="card-text">Data da Prova: #{empty processoSeletivo.dataProva ? 'N/A' : processoSeletivo.dataProva}</p>
+                        <p class="card-text">Data do Gabarito: #{empty processoSeletivo.dataGabarito ? 'N/A' : processoSeletivo.dataGabarito}</p>
+                        <p class="card-text">Data do Resultado: #{empty processoSeletivo.dataResultado ? 'N/A' : processoSeletivo.dataResultado}</p>
+                        <p class="card-text">Link do Edital: #{empty processoSeletivo.linkEdital ? 'N/A' : processoSeletivo.linkEdital}</p>
                         <!-- Adicione outros campos conforme necessário -->
                     </div>
                 </div>
             </ui:repeat>
+
+            <!-- Texto quando não há processos seletivos -->
+            <h:panelGroup rendered="#{empty processoSeletivoController.processosSeletivos}">
+                <p>Não há processos seletivos disponíveis no momento.</p>
+            </h:panelGroup>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

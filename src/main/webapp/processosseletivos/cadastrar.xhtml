@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cadastro de Postagem</title>
+        <link rel="stylesheet" href="../resources/css/login.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"    
+              integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+              crossorigin="anonymous" />
+
+        <h:outputStylesheet name="/resources/css/default.css"/>
+        <h:outputStylesheet name="/resources/css/cssLayout.css"/>
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+
+        <div class="login__panel">
+            <div class="icon">
+                <i class="material-symbols-outlined marcaRede">schoolIFNMG</i> 
+            </div>
+            <h:form id="cadastroProcessoSeletivoForm" prependId="false">
+                <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                    <p:outputLabel for="titulo" value="Título"/>
+                    <p:inputText class="inputLogin__user" id="titulo" value="#{processoSeletivoCadastroBean.titulo}" a:placeholder="Título" required="true"/>
+                    <p:message for="titulo"/>
+
+                    <p:outputLabel for="dataInicio" value="Data de Início"/>
+                    <p:inputText id="dataInicio" value="#{processoSeletivoCadastroBean.dataInicio}" a:placeholder="dd/MM/yyyy" required="true"  type="date" />
+                    <p:message for="dataInicio"/>
+
+                    <p:outputLabel for="dataFim" value="Data de Fim"/>
+                    <p:inputText id="dataFim" value="#{processoSeletivoCadastroBean.dataFim}" a:placeholder="dd/MM/yyyy" required="true" type="date"/>
+                    <p:message for="dataFim"/>
+                    
+                    <p:outputLabel for="dataProva" value="Data da Prova"/>
+                    <p:inputText id="dataProva" value="#{processoSeletivoCadastroBean.dataProva}" a:placeholder="dd/MM/yyyy" type="date"/>
+                    <p:message for="dataProva"/>
+
+                    <p:outputLabel for="dataGabarito" value="Data do Gabarito"/>
+                    <p:inputText id="dataGabarito" value="#{processoSeletivoCadastroBean.dataGabarito}" a:placeholder="dd/MM/yyyy" type="date"/>
+                    <p:message for="dataGabarito"/>
+
+                    <p:outputLabel for="dataResultado" value="Data do Resultado"/>
+                    <p:inputText id="dataResultado" value="#{processoSeletivoCadastroBean.dataResultado}" a:placeholder="dd/MM/yyyy" type="date"/>
+                    <p:message for="dataResultado"/>
+
+                    <p:outputLabel for="linkEdital" value="Link do Edital"/>
+                    <p:inputText id="linkEdital" value="#{processoSeletivoCadastroBean.linkEdital}" a:placeholder="Link do Edital"/>
+                    <p:message for="linkEdital"/>
+                    
+                    <p:outputLabel for="ativo" value="Ativo"/>
+                    <p:selectBooleanCheckbox id="ativo" value="#{processoSeletivoCadastroBean.ativo}"/>
+                    <br/>
+                    <p:commandButton
+                        id="submit"
+                        value="Cadastrar"
+                        action="#{processoSeletivoCadastroBean.cadastrar()}"
+                        ajax="false"/>
+                </h:panelGrid>
+                <!-- Adicione mensagens adicionais conforme necessário -->
+            </h:form>
+        </div>
+    </h:body>
+</html>
