@@ -88,14 +88,14 @@ public class CargaDadosBean
         entityManager.persist(processo2);
 
         // Criação de Postagens
-        Participa participa1 = new Participa(processo1, usuario1, LocalDate.now(), 0.0f);
-        Participa participa2 = new Participa(processo2, usuario2, LocalDate.now(), 0.0f);
-
-        processo1.setMembros(Arrays.asList(participa1));
-        processo2.setMembros(Arrays.asList(participa2));
-
-        entityManager.persist(processo1);
-        entityManager.persist(processo2);
+//        Participa participa1 = new Participa(processo1, usuario1, LocalDate.now(), 0.0f);
+//        Participa participa2 = new Participa(processo2, usuario2, LocalDate.now(), 0.0f);
+//
+//        processo1.setMembros(Arrays.asList(participa1));
+//        processo2.setMembros(Arrays.asList(participa2));
+//
+//        entityManager.persist(processo1);
+//        entityManager.persist(processo2);
 
         // Criação de Postagens
         Postagem postagem1 = new Postagem(

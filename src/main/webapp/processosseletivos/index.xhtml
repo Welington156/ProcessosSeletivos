@@ -41,6 +41,20 @@
                         <p class="card-text">Data do Resultado: #{empty processoSeletivo.dataResultado ? 'N/A' : processoSeletivo.dataResultado}</p>
                         <p class="card-text">Link do Edital: #{empty processoSeletivo.linkEdital ? 'N/A' : processoSeletivo.linkEdital}</p>
                         <!-- Adicione outros campos conforme necessário -->
+
+                        <h:form>
+    <p:commandButton value="#{processoSeletivoController.isCadastrado(processoSeletivo.id) ? 'Descadastrar' : 'Cadastrar'}"
+                     action="#{processoSeletivoController.toggleCadastro(processoSeletivo.id)}"
+                     rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}"
+                     styleClass="btn btn-primary mb-3">
+        <f:ajax execute="@form" render=":formListaProcessosSeletivos:msgs :formListaProcessosSeletivos:processosSeletivos" />
+    </p:commandButton>
+</h:form>
+
+
+
+
+
                     </div>
                 </div>
             </ui:repeat>

@@ -13,5 +13,7 @@ public interface PostagemServiceLocal {
     
     void persist(Postagem postagem);
     
+
+    
     // Adicione outros métodos conforme necessário
 }
