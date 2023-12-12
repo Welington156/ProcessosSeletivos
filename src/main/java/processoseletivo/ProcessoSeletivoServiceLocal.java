@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ProcessoSeletivoServiceLocal {
     
-    List<ProcessoSeletivo> findProcesso();
+    List<ProcessoSeletivo> findProcessosSeletivos();
     void persist(ProcessoSeletivo processoseletivo);
     
 }

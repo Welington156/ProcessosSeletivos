@@ -17,7 +17,7 @@ public class ProcessoSeletivoService implements ProcessoSeletivoServiceLocal {
     private EntityManager entityManager;
 
     @Override
-    public List<ProcessoSeletivo> findProcesso() {
+    public List<ProcessoSeletivo> findProcessosSeletivos() {
         return entityManager.createNamedQuery("findProcessoSeletivo", ProcessoSeletivo.class).getResultList();
     }
 

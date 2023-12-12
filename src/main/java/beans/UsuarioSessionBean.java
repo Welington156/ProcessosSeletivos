@@ -30,7 +30,7 @@ public class UsuarioSessionBean implements Serializable {
     }
 
     public boolean isAuthenticated() {
-      return usuario != null;
+        return usuario != null;
     }
 
     public void desconectar() throws IOException {
