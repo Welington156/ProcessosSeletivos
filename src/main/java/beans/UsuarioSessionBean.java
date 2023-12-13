@@ -1,5 +1,6 @@
 package beans;
 
+import controllers.PageController;
 import usuario.Usuario;
 import usuario.UsuarioService;
 import javax.enterprise.context.SessionScoped;
@@ -10,6 +11,10 @@ import java.io.IOException;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
+import javax.validation.constraints.NotEmpty;
+import usuario.Credencial;
+import usuario.Perfil;
+import usuario.UsuarioServiceLocal;
 
 @Named
 @SessionScoped
@@ -17,11 +22,9 @@ public class UsuarioSessionBean implements Serializable {
     
     @Inject
     FacesContext facesContext;
-
+    
     @Inject
     SecurityContext securityContext;
-
-    
     
     private Usuario usuario;
 
@@ -39,7 +42,7 @@ public class UsuarioSessionBean implements Serializable {
         String path = externalContext.getApplicationContextPath();
         externalContext.redirect(path + "/login");
     }
-    
+      
     public void salvarAlteracoes() {
     // Lógica para obter o usuário atualizado com as alterações
     Usuario usuarioAtualizado = getUsuario();

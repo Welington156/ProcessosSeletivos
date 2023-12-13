@@ -24,19 +24,11 @@ public class PageController {
     public void goToCadastrar() throws IOException {
         redirect("/cadastrar");
     }
-
-    public void goToAdmin() throws IOException {
-        redirect("/admin");
+    
+    public void goToConta() throws IOException {
+        redirect("/usuario/minhaConta.xhtml");
     }
-
-    public void goToEditor() throws IOException {
-        redirect("/editor");
-    }
-
-    public void goToCandidato() throws IOException {
-        redirect("/candidato");
-    }
-
+    
     public void goToAdminCadastro() throws IOException {
         redirect("/admin/cadastrar.xhtml");
     }

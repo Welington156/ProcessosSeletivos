@@ -7,24 +7,109 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core">
 
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Nova fonte */
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333; /* Cor do texto principal */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px; /* Aumenta o tamanho da fonte */
+            margin-bottom: 20px;
+            color: #0066cc; /* Nova cor do título */
+        }
+
+        h3 {
+            font-size: 20px; /* Aumenta o tamanho da fonte */
+            margin-bottom: 10px;
+            color: #009933; /* Nova cor do título */
+        }
+
+        h4 {
+            font-size: 18px; /* Aumenta o tamanho da fonte */
+            margin-bottom: 10px;
+            color: #ff6600; /* Nova cor do título */
+        }
+
+        .btn {
+            margin: 0 10px 10px 0;
+        }
+
+        .panelGrid {
+            margin-bottom: 20px;
+        }
+
+        .outputLabel {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .inputText {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .commandButton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .commandButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+
     <ui:composition template="/WEB-INF/templates/template1.xhtml">
         <ui:define name="content">
-            <h2>Minha Conta</h2>
-
-            <h:form id="minhaContaForm">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Nome:" />
+            <div class="container">
+                <h2>Bem-vindo
                     <h:outputText value="#{usuarioSessionBean.nome}" />
+                </h2>
 
-                    <h:outputLabel value="Email:" />
-                    
-                    <p:inputText id="email" value="#{usuarioSessionBean.email}" required="true" />
-                </h:panelGrid>
+                <h3>Minha Conta</h3>
 
-                <p:commandButton value="Salvar" action="#{usuarioSessionBean.salvarAlteracoes}" ajax="false" />
+                <h:form>
+                    <!-- Botões de Cadastro para Usuários do Tipo "Editor" -->
+                    <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />                    <p></p>
+                    <h:commandButton value="Cadastrar Usuario" action="#{pageController.goToAdminCadastro()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary" />
+                    <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary" />
+                </h:form>
 
+                <h4>Editar dados</h4>
+                <h:form id="minhaContaForm">
+                    <p:panelGrid columns="2" styleClass="panelGrid">
+                        <p:outputLabel value="Nome:" styleClass="outputLabel" />
+                        <p:inputText id="nome" value="#{usuarioSessionBean.nome}" required="true" styleClass="inputText" />
 
-            </h:form>
+                        <p:outputLabel value="Email:" styleClass="outputLabel" />
+                        <p:inputText id="email" value="#{usuarioSessionBean.email}" required="true" styleClass="inputText" />
+                    </p:panelGrid>
+
+                    <p:commandButton value="Salvar" action="#{usuarioSessionBean.salvarAlteracoes}" ajax="false" styleClass="commandButton" />
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </html>

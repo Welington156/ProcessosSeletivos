@@ -84,19 +84,14 @@ public class LoginController {
                 break;
         }
     }
-    
+
 private void redirectToAppropriatePage() throws IOException {
     Usuario usuario = usuarioService.buscarPorEmail(email);
     Credencial credencial = usuario.getCredencial(); 
     Perfil perfil = credencial.getPerfil();
     
-    if (Perfil.ADMINISTRADOR.equals(perfil)) {
-        pageController.goToAdmin();
-    } else if (Perfil.CANDIDATO.equals(perfil)) {
-        pageController.goToCandidato();
-    } else if (Perfil.EDITOR.equals(perfil)){
-        pageController.goToEditor();
-    }
+    pageController.goToConta();
+    
 }
 
 

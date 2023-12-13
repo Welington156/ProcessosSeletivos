@@ -22,7 +22,7 @@
 
             <h:form>
                 <!-- Botão de Cadastro para Usuários do Tipo "Editor" -->
-                <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary mb-3" />
+                <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />
             </h:form>
 
             <h1>Lista de Processos Seletivos</h1>
