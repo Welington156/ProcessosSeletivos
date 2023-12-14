@@ -18,6 +18,8 @@ public class PostagemController {
 
     private List<Postagem> postagens;
 
+    
+    
     @PostConstruct
     public void init() {
         // Carregar as postagens ao iniciar o bean
@@ -28,4 +30,10 @@ public class PostagemController {
     public List<Postagem> getPostagens() {
         return postagens;
     }
+    
+    public Postagem getPostagemById(Long id) {
+        // Aqui você deve implementar a lógica real para obter a postagem pelo ID
+        return postagemService.findPostagemById(id);
+    }
+    
 }

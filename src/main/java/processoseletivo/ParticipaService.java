@@ -43,4 +43,7 @@ public class ParticipaService implements ParticipaServiceLocal {
                 throw new EntityNotFoundException("Participa não encontrado com ID: " + participaId);
             }
 }
+    public void atualizarNota(Participa participacao) {
+    entityManager.merge(participacao);
+}
 }

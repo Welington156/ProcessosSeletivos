@@ -44,6 +44,16 @@ public class PageController {
         redirect("/processosseletivos/participa.xhtml");
     }
     
+    
+    public String getVisualizarPostagemUrl(Long postagemId) {
+        return "noticias/view.xhtml?id=" + postagemId;
+    }
+
+    public String getVisualizarProcessoSeletivoUrl(Long processoSeletivoId) {
+        return "processosseletivos/view.xhtml?id=" + processoSeletivoId;
+        
+    }
+    
     //</editor-fold>
 
     public void redirect(String url) throws IOException {

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes do Processo Seletivo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </h:head>
+
+    <h:body>
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+        <ui:param name="processoId" value="#{param.id}" />
+
+
+        <div class="container mt-4">
+            <div class="card">
+                <h5 class="card-header">#{processoSeletivoController.getProcessoSeletivoById(processoId).titulo}</h5>
+                <div class="card-body">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="dataInicio" value="Data de Início:" />
+                        <h:outputText id="dataInicio" value="#{processoSeletivoController.getProcessoSeletivoById(processoId).dataInicio}" />
+
+                        <h:outputLabel for="dataFim" value="Data de Fim:" />
+                        <h:outputText id="dataFim" value="#{processoSeletivoController.getProcessoSeletivoById(processoId).dataFim}" />
+
+                        <h:outputLabel for="ativo" value="Ativo:" />
+                        <h:outputText id="ativo" value="#{processoSeletivoController.getProcessoSeletivoById(processoId).ativo ? 'Sim' : 'Não'}" />
+
+                        <h:outputLabel for="criador" value="Criador:" />
+                        <h:outputText id="criador" value="#{empty processoSeletivoController.getProcessoSeletivoById(processoId).criador ? 'N/A' : processoSeletivoController.getProcessoSeletivoById(processoId).criador.nome}" />
+
+                        <h:outputLabel for="dataProva" value="Data da Prova:" />
+                        <h:outputText id="dataProva" value="#{empty processoSeletivoController.getProcessoSeletivoById(processoId).dataProva ? 'N/A' : processoSeletivoController.getProcessoSeletivoById(processoId).dataProva}" />
+
+                        <h:outputLabel for="dataGabarito" value="Data do Gabarito:" />
+                        <h:outputText id="dataGabarito" value="#{empty processoSeletivoController.getProcessoSeletivoById(processoId).dataGabarito ? 'N/A' : processoSeletivoController.getProcessoSeletivoById(processoId).dataGabarito}" />
+
+                        <h:outputLabel for="dataResultado" value="Data do Resultado:" />
+                        <h:outputText id="dataResultado" value="#{empty processoSeletivoController.getProcessoSeletivoById(processoId).dataResultado ? 'N/A' : processoSeletivoController.getProcessoSeletivoById(processoId).dataResultado}" />
+
+                        <h:outputLabel for="linkEdital" value="Link do Edital:" />
+                        <h:outputText id="linkEdital" value="#{empty processoSeletivoController.getProcessoSeletivoById(processoId).linkEdital ? 'N/A' : processoSeletivoController.getProcessoSeletivoById(processoId).linkEdital}" />
+                    </h:panelGrid>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

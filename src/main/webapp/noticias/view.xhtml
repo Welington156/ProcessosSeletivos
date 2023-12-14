@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes da Postagem</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </h:head>
+
+    <h:body>
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+        <ui:param name="postId" value="#{param.id}" />
+
+        <div class="container mt-4">
+            <div class="card">
+                <h5 class="card-header">#{postagemController.getPostagemById(postId).titulo}</h5>
+                <div class="card-body">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="dataPublicacao" value="Data de Publicação:" />
+                        <h:outputText id="dataPublicacao" value="#{postagemController.getPostagemById(postId).datapublicacao}" />
+
+                        <h:outputLabel for="autor" value="Autor:" />
+                        <h:outputText id="autor" value="#{postagemController.getPostagemById(postId).autor.nome}" />
+
+                        <h:outputLabel for="conteudo" value="Conteúdo:" />
+                        <h:outputText id="conteudo" value="#{postagemController.getPostagemById(postId).conteudo}" escape="false" />
+
+                        <h:outputLabel for="dataEdicao" value="Data de Edição:" />
+                        <h:outputText id="dataEdicao" value="#{postagemController.getPostagemById(postId).dataedicao}" />
+
+                        <h:outputLabel for="publicacao" value="Tipo de Publicação:" />
+                        <h:outputText id="publicacao" value="#{postagemController.getPostagemById(postId).publicacao}" />
+                    </h:panelGrid>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

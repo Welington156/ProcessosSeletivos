@@ -16,4 +16,6 @@ public interface PostagemServiceLocal {
 
     
     // Adicione outros métodos conforme necessário
+
+    public Postagem findPostagemById(Long id);
 }

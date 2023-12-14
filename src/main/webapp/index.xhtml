@@ -1,21 +1,69 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./WEB-INF/templates/template1.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="top">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Página Inicial</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </h:head>
 
-    </ui:define>
-    
-    <ui:define name="content">
-        <h:head>
-            <!-- Adicione os estilos necessários aqui -->
-        </h:head>
+    <h:body>
+        <ui:include src="WEB-INF/templates/template1.xhtml" />
 
-        <h:body>
- 
-        </h:body>
-    </ui:define>
+        <div class="container mt-5"> 
+            <h1>Bem-vindo à Página Inicial</h1>
 
-</ui:composition>
+            <!-- Exibição das duas últimas postagens -->
+            <h2>Últimas Postagens</h2>
+            <div class="card-deck">
+                <ui:repeat value="#{postagemController.getPostagens()}" var="postagem" varStatus="loop">
+                    <ui:fragment rendered="#{loop.index lt 2}">
+                        <a href="#{pageController.getVisualizarPostagemUrl(postagem.id)}" style="text-decoration: none; color: inherit;">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">#{postagem.titulo}</h5>
+                                <p class="card-text">Data de Publicação: #{postagem.datapublicacao}</p>
+                                <p class="card-text">Autor: #{postagem.autor.nome}</p>
+                                <p class="card-text">Conteúdo: #{postagem.conteudo}</p>
+                                <p class="card-text">Data de Edição: #{postagem.dataedicao}</p>
+                                <p class="card-text">Tipo de Publicação: #{postagem.publicacao}</p>
+                            </div>
+                        </div>
+                            
+                        </a>
+                    </ui:fragment>
+                </ui:repeat>
+            </div>
+            
+            <!-- Exibição dos dois últimos processos seletivos -->
+            <h2 style="padding-top: 15px">Últimos Processos Seletivos</h2>
+            <div class="card-deck">
+                <ui:repeat value="#{processoSeletivoController.getProcessosSeletivos()}" var="processoSeletivo" varStatus="loop">
+                    <ui:fragment rendered="#{loop.index lt 2}">
+                        <a href="#{pageController.getVisualizarProcessoSeletivoUrl(processoSeletivo.id)}" style="text-decoration: none; color: inherit;">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">#{processoSeletivo.titulo}</h5>
+                                <p class="card-text">Data de Início: #{processoSeletivo.dataInicio}</p>
+                                <p class="card-text">Data de Fim: #{processoSeletivo.dataFim}</p>
+                                <p class="card-text">Ativo: #{processoSeletivo.ativo ? 'Sim' : 'Não'}</p>
+                                <p class="card-text">Criador: #{empty processoSeletivo.criador ? 'N/A' : processoSeletivo.criador.nome}</p>
+                                <p class="card-text">Data da Prova: #{empty processoSeletivo.dataProva ? 'N/A' : processoSeletivo.dataProva}</p>
+                                <p class="card-text">Data do Gabarito: #{empty processoSeletivo.dataGabarito ? 'N/A' : processoSeletivo.dataGabarito}</p>
+                                <p class="card-text">Data do Resultado: #{empty processoSeletivo.dataResultado ? 'N/A' : processoSeletivo.dataResultado}</p>
+                                <p class="card-text">Link do Edital: #{empty processoSeletivo.linkEdital ? 'N/A' : processoSeletivo.linkEdital}</p>
+                            </div>
+                        </div>
+                        </a>
+                    </ui:fragment>
+                </ui:repeat>
+            </div>
+        </div>
+    </h:body>
+</html>

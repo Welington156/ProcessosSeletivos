@@ -91,4 +91,9 @@ public class ProcessoSeletivoController {
         }
         return null; // Substitua pela lógica real
     }
+    
+    public ProcessoSeletivo getProcessoSeletivoById(Long id) {
+        // Aqui você deve implementar a lógica real de busca no banco de dados
+        return processoSeletivoService.findProcessoSeletivoById(id);
+    }
 }

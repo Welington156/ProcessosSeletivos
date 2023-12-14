@@ -17,4 +17,5 @@ public interface ProcessoSeletivoServiceLocal {
     public boolean isUsuarioParticipante(Long usuarioId, Long processoSeletivoId);
     public void persistParticipacao(Participa participa);
     public void descadastrarParticipacao(Long usuarioId, Long processoSeletivoId);
+    public ProcessoSeletivo findProcessoSeletivoById(Long id);
 }

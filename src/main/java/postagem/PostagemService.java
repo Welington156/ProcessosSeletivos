@@ -25,6 +25,10 @@ public class PostagemService implements PostagemServiceLocal {
         entityManager.persist(postagem);
     }
 
-    // Adicione outros métodos conforme necessário
+    @Override
+    public Postagem findPostagemById(Long id) {
+        // Aqui você deve implementar a lógica real para buscar a postagem no banco de dados
+        return entityManager.find(Postagem.class, id);
+    }
 
 }

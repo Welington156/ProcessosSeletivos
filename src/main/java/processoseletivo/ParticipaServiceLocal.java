@@ -14,4 +14,6 @@ public interface ParticipaServiceLocal {
     
     public List<Participa> findParticipas();
     public void atribuirNota(Long participaId, Float novaNota);
+
+    public void atualizarNota(Participa participacao);
 }

@@ -48,4 +48,9 @@ public class ProcessoSeletivoService implements ProcessoSeletivoServiceLocal {
             .setParameter("processoSeletivoId", processoSeletivoId)
             .executeUpdate();
 }
+    
+    @Override
+    public ProcessoSeletivo findProcessoSeletivoById(Long id) {
+        return entityManager.find(ProcessoSeletivo.class, id);
+    }
 }
