@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Participantes do Processo Seletivo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <!-- Adicione a linha abaixo para importar os estilos do PrimeFaces -->
+        <h:outputStylesheet library="primefaces" name="jquery/ui/jquery-ui.css" />
+    </h:head>
+
+    <h:body>
+
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+
+        <h1>Participantes do Processo Seletivo</h1>
+
+        <!-- Exibição dos processos seletivos -->
+        <ui:repeat value="#{participaController.participacoes}" var="participacao">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p class="card-text">Nome do Inscrito: #{participacao.usuario.nome}</p>
+                    <p class="card-text">Email do inscrito: #{participacao.usuario.email}</p>
+                    <p class="card-text">Data de Inscrição: #{participacao.dataInscricao}</p>
+                    <p class="card-text">Processo Seletivo: #{participacao.processoSeletivo.id}</p>
+                    
+                    <!-- Campo de Edição para a Nota -->
+                    <p:inputText value="#{participacao.nota}" />
+                    
+                    <!-- Botão de Salvar -->
+                    <p:commandButton value="Salvar" action="#{participaController.salvarNota(participacao)}" />
+                </div>
+            </div>
+        </ui:repeat>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </h:body>
+</html>

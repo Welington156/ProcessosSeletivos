@@ -90,7 +90,7 @@ private void redirectToAppropriatePage() throws IOException {
     Credencial credencial = usuario.getCredencial(); 
     Perfil perfil = credencial.getPerfil();
     
-    pageController.goToConta();
+    pageController.goToHome();
     
 }
 

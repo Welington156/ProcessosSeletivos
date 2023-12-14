@@ -10,8 +10,7 @@ import javax.persistence.PersistenceContext;
  * @author welin
  */
 @Stateless
-public class ProcessoSeletivoService
-        implements ProcessoSeletivoServiceLocal {
+public class ProcessoSeletivoService implements ProcessoSeletivoServiceLocal {
 
     @PersistenceContext
     private EntityManager entityManager;

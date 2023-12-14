@@ -56,7 +56,7 @@ public class CargaDadosBean
                 LocalDate.of(2023, 2, 1),
                 "Processo 1",
                 true,
-                usuario1,
+                usuario2,
                 LocalDate.of(2023, 1, 15),
                 LocalDate.of(2023, 2, 1),
                 LocalDate.of(2023, 2, 15),
@@ -68,11 +68,24 @@ public class CargaDadosBean
                 LocalDate.of(2023, 4, 1),
                 "Processo 2",
                 true,
-                usuario1,
+                usuario2,
                 LocalDate.of(2023, 3, 15),
                 LocalDate.of(2023, 4, 1),
                 LocalDate.of(2023, 4, 15),
                 "Edital 2",
+                null // membros serão adicionados posteriormente
+        );
+        
+        ProcessoSeletivo processo3 = new ProcessoSeletivo(
+                LocalDate.of(2023, 4, 4),
+                LocalDate.of(2023, 5, 6),
+                "Processo 3",
+                true,
+                usuario2,
+                LocalDate.of(2023, 1, 15),
+                LocalDate.of(2023, 2, 1),
+                LocalDate.of(2023, 2, 15),
+                "Edital 3",
                 null // membros serão adicionados posteriormente
         );
         Postagem postagem = new Postagem(
@@ -86,16 +99,17 @@ public class CargaDadosBean
         entityManager.persist(postagem);
         entityManager.persist(processo1);
         entityManager.persist(processo2);
-
+        entityManager.persist(processo3);
+ 
         // Criação de Postagens
-//        Participa participa1 = new Participa(processo1, usuario1, LocalDate.now(), 0.0f);
-//        Participa participa2 = new Participa(processo2, usuario2, LocalDate.now(), 0.0f);
+        Participa participa1 = new Participa(processo1, usuario1, LocalDate.now(), 0.0f);
+        Participa participa2 = new Participa(processo2, usuario2, LocalDate.now(), 0.0f);
 //
-//        processo1.setMembros(Arrays.asList(participa1));
-//        processo2.setMembros(Arrays.asList(participa2));
+        processo1.setMembros(Arrays.asList(participa1));
+        processo2.setMembros(Arrays.asList(participa2));
 //
-//        entityManager.persist(processo1);
-//        entityManager.persist(processo2);
+        entityManager.persist(processo1);
+        entityManager.persist(processo2);
 
         // Criação de Postagens
         Postagem postagem1 = new Postagem(

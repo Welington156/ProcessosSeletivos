@@ -40,6 +40,9 @@ public class PageController {
     public void goToCadastrarProcesso() throws IOException{
         redirect("/processosseletivos/cadastrar.xhtml");
     }
+    public void goToAtribuirNota() throws IOException{
+        redirect("/processosseletivos/participa.xhtml");
+    }
     
     //</editor-fold>
 

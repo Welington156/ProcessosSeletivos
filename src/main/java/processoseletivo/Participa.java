@@ -15,12 +15,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author welin
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "Participa.findParticipa",
+            query = "SELECT p FROM Participa p"
+    )
+})
 public class Participa implements Serializable {
 
     private static final long serialVersionUID = 1L;
