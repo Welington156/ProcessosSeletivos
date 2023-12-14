@@ -5,6 +5,7 @@
 package processoseletivo;
 
 import java.util.List;
+import usuario.Usuario;
 
 /**
  *
@@ -18,4 +19,5 @@ public interface ProcessoSeletivoServiceLocal {
     public void persistParticipacao(Participa participa);
     public void descadastrarParticipacao(Long usuarioId, Long processoSeletivoId);
     public ProcessoSeletivo findProcessoSeletivoById(Long id);
+    public List<ProcessoSeletivo> getProcessosSeletivosByUsuario(Usuario usuarioConectado);
 }

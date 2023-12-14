@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import usuario.Usuario;
 
 /**
  *
@@ -52,5 +53,13 @@ public class ProcessoSeletivoService implements ProcessoSeletivoServiceLocal {
     @Override
     public ProcessoSeletivo findProcessoSeletivoById(Long id) {
         return entityManager.find(ProcessoSeletivo.class, id);
+    }
+
+    public List<ProcessoSeletivo> getProcessosSeletivosByUsuario(Usuario usuario) {
+        return entityManager.createQuery(
+                "SELECT p FROM processoseletivo p JOIN p.processos participa WHERE participa.usuario = :usuario",
+                ProcessoSeletivo.class)
+                .setParameter("usuario", usuario)
+                .getResultList();
     }
 }

@@ -96,6 +96,8 @@
                     <h:commandButton value="Cadastrar Usuario" action="#{pageController.goToAdminCadastro()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary" />                                         <p></p>
                     <h:commandButton value="Atribuir Nota" action="#{pageController.goToAtribuirNota()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />                   
                     <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary" />
+                    
+                    <h:commandButton value="Ver Notas" action="#{pageController.goToNotas()}"  rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}"/>
                 </h:form>
 
                 <h4>Editar dados</h4>

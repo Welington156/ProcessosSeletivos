@@ -54,6 +54,10 @@ public class PageController {
         
     }
     
+    public String goToNotas() throws IOException{
+        return "usuario/notas.xhtml";
+    }
+    
     //</editor-fold>
 
     public void redirect(String url) throws IOException {

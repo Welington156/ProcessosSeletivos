@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Meus Processos Seletivos</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </h:head>
+
+    <h:body>
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
+
+        <h1>Meus Processos Seletivos</h1>
+
+        <!-- Obtém a lista de processos seletivos do usuário -->
+        <ui:repeat value="#{usuarioController.getMeusProcessosSeletivos()}" var="processoSeletivo">
+            <div class="card mt-3">
+                <h5 class="card-header">#{processoSeletivo.titulo}</h5>
+                <div class="card-body">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="dataInicio" value="Data de Início:" />
+                        <h:outputText id="dataInicio" value="#{processoSeletivo.dataInicio}" />
+
+                        <h:outputLabel for="dataFim" value="Data de Fim:" />
+                        <h:outputText id="dataFim" value="#{processoSeletivo.dataFim}" />
+
+                        <!-- Adicione mais informações conforme necessário -->
+
+                        <!-- Mostra a nota do processo seletivo -->
+                        <h:outputLabel for="nota" value="Nota:" />
+                        <h:outputText id="nota" value="#{processoSeletivo.nota}" />
+                    </h:panelGrid>
+                </div>
+            </div>
+        </ui:repeat>
+    </h:body>
+</html>

@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import usuario.Usuario;
 
 /**
  *
@@ -24,6 +26,9 @@ public class ParticipaService implements ParticipaServiceLocal {
 
     @PersistenceContext
     private EntityManager entityManager;
+    
+    public ParticipaService(){
+    }
 
     @Override
     public List<Participa> findParticipas() {
@@ -46,4 +51,7 @@ public class ParticipaService implements ParticipaServiceLocal {
     public void atualizarNota(Participa participacao) {
     entityManager.merge(participacao);
 }
+    
+   
+    
 }
