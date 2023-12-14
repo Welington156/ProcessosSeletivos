@@ -25,15 +25,44 @@
 
                     <h3>Minha Conta</h3>
 
-                    <h:form>
-                        <!-- Botões de Cadastro para Usuários do Tipo "Editor" -->
-                        <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />
-                        <h:commandButton value="Cadastrar Usuario" action="#{pageController.goToAdminCadastro()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary" />
-                        <h:commandButton value="Atribuir Nota" action="#{pageController.goToAtribuirNota()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />
-                        <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary" />
-                        <h:commandButton value="Ver Notas" action="#{pageController.goToNotas()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}" styleClass="btn btn-info mb-3" />
-                    </h:form>
+<h:form>
+    <!-- Botões de Cadastro para Usuários do Tipo "administrador" -->
+    <h:panelGroup rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}">
+        <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" styleClass="btn btn-primary mb-3" />
+        <br/>
+        <h:commandButton value="Cadastrar Usuário" action="#{pageController.goToAdminCadastro()}" styleClass="btn btn-primary mb-3" />
+        <br/>
+        <h:commandButton value="Atribuir Nota" action="#{pageController.goToAtribuirNota()}" styleClass="btn btn-primary mb-3" />
+        <br/>
+    </h:panelGroup>
 
+    <!-- Botão de Cadastro para Usuários do Tipo "Editor" -->
+    <h:panelGroup rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}">
+        <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" styleClass="btn btn-primary mb-3" />
+        <br/>
+    </h:panelGroup>
+
+    <!-- Botão de Visualização de Notas para Usuários do Tipo "Candidato" -->
+    <h:panelGroup rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}">
+        <h:commandButton value="Ver Notas" action="#{pageController.goToNotas()}" styleClass="btn btn-primary mb-3" />
+    </h:panelGroup>
+</h:form>
+                    
+                    <h:form>
+
+                <h4>Editar dados</h4>
+                <h:form id="minhaContaForm">
+                    <p:panelGrid columns="2" styleClass="panelGrid">
+                        <p:outputLabel value="Nome:" styleClass="outputLabel" />
+                        <p:inputText id="nome" value="#{usuarioSessionBean.nome}" required="true" styleClass="inputText" />
+
+                        <p:outputLabel value="Email:" styleClass="outputLabel" />
+                        <p:inputText id="email" value="#{usuarioSessionBean.email}" required="true" styleClass="inputText" />
+                    </p:panelGrid>
+
+                </h:form>
+                    <p:commandButton value="Salvar" action="#{usuarioSessionBean.salvarAlteracoes}" ajax="false" styleClass="btn btn-primary mb-3" />
+                </h:form>
                     
                 </div>
             </div>

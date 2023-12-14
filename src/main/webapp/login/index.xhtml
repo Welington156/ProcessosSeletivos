@@ -7,7 +7,7 @@
 
     <h:head>
         <meta charset="UTF-8" />
-        <meta  name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login</title>
         <link rel="stylesheet" href="../resources/css/login.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -22,7 +22,6 @@
 
         <ui:include src="../WEB-INF/templates/template1.xhtml" />
 
-
         <div class="login__panel">
             <div class="icon">
                 <i class="material-symbols-outlined marcaRede">schoolIFNMG</i> 
@@ -30,7 +29,8 @@
 
             <h:form>
                 <p:messages globalOnly="true"/>
-                <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
+                
+                <h:panelGrid columns="1" style="margin: 0 auto;">
                     <p:outputLabel for="email" value="Email"/>
                     <p:inputText class="inputLogin__user" id="email" value="#{loginController.email}"/>
                     <p:message for="email"/>
@@ -39,20 +39,6 @@
                     <p:inputText class="inputLogin__pass" id="password" value="#{loginController.password}" type="password"/>
                     <p:message for="password"/>
 
-                    <p:commandButton
-                        id="submit"
-                        update="@form"
-                        value="Login"
-                        action="#{loginController.execute}"
-                        ajax="false"/>
-                    
-                    <p:commandButton
-                        id="submit2"
-                        value="Cadastre-se"
-                        action="#{pageController.goToCadastrar()}"
-                        ajax="false"
-                        immediate="true"/>
-                    
                    <p:captcha 
                             id="captcha"
                             label="Captcha" 
@@ -60,6 +46,21 @@
                             theme="light"
                             size="normal"
                             requiredMessage="Você é um robô? Se não for, marque o captcha. ;)" />
+                  
+                    <p:commandButton
+                        id="submit"
+                        update="@form"
+                        value="Login"
+                        action="#{loginController.execute}"
+                        ajax="false"/>
+
+                    <p:commandButton
+                        id="submit2"
+                        value="Cadastre-se"
+                        action="#{pageController.goToCadastrar()}"
+                        ajax="false"
+                        immediate="true"/>
+                   
                    <p:messages
                         for="captcha"/>
                 </h:panelGrid>
