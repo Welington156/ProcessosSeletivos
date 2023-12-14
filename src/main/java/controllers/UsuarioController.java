@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import processoseletivo.Participa;
 import processoseletivo.ParticipaService;
 import processoseletivo.ProcessoSeletivo;
@@ -28,7 +31,8 @@ public class UsuarioController implements Serializable {
     @Inject
     private UsuarioSessionBean usuarioSessionBean;
     
-
+    @PersistenceContext
+    private EntityManager entityManager;
     
     private Usuario usuario;
     
@@ -49,6 +53,15 @@ public class UsuarioController implements Serializable {
         this.usuario = usuario;
     }
     
-   
+    public List<Participa> getMinhasNotas() {
+        Usuario usuarioAtual = usuarioSessionBean.getUsuario();
+
+        TypedQuery<Participa> query = entityManager.createQuery(
+                "SELECT p FROM Participa p WHERE p.candidato = :usuario", Participa.class);
+
+        query.setParameter("usuario", usuarioAtual);
+
+        return query.getResultList();
+    }
     
 }

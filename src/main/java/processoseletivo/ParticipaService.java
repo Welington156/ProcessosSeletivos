@@ -51,6 +51,8 @@ public class ParticipaService implements ParticipaServiceLocal {
     public void atualizarNota(Participa participacao) {
     entityManager.merge(participacao);
 }
+
+    
     
    
     

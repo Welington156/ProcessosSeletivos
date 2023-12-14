@@ -1,118 +1,46 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif; /* Nova fonte */
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333; /* Cor do texto principal */
-        }
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Minha Conta</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    </h:head>
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    <h:body>
 
-        h2 {
-            font-size: 24px; /* Aumenta o tamanho da fonte */
-            margin-bottom: 20px;
-            color: #0066cc; /* Nova cor do título */
-        }
+        <ui:include src="../WEB-INF/templates/template1.xhtml" />
 
-        h3 {
-            font-size: 20px; /* Aumenta o tamanho da fonte */
-            margin-bottom: 10px;
-            color: #009933; /* Nova cor do título */
-        }
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2>Bem-vindo
+                        <h:outputText value="#{usuarioSessionBean.nome}" />
+                    </h2>
 
-        h4 {
-            font-size: 18px; /* Aumenta o tamanho da fonte */
-            margin-bottom: 10px;
-            color: #ff6600; /* Nova cor do título */
-        }
+                    <h3>Minha Conta</h3>
 
-        .btn {
-            margin: 0 10px 10px 0;
-        }
+                    <h:form>
+                        <!-- Botões de Cadastro para Usuários do Tipo "Editor" -->
+                        <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />
+                        <h:commandButton value="Cadastrar Usuario" action="#{pageController.goToAdminCadastro()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary" />
+                        <h:commandButton value="Atribuir Nota" action="#{pageController.goToAtribuirNota()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />
+                        <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary" />
+                        <h:commandButton value="Ver Notas" action="#{pageController.goToNotas()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}" styleClass="btn btn-info mb-3" />
+                    </h:form>
 
-        .panelGrid {
-            margin-bottom: 20px;
-        }
-
-        .outputLabel {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .inputText {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .commandButton {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .commandButton:hover {
-            background-color: #45a049;
-        }
-    </style>
-
-    <ui:composition template="/WEB-INF/templates/template1.xhtml">
-        <ui:define name="content">
-            <div class="container">
-                <h2>Bem-vindo
-                    <h:outputText value="#{usuarioSessionBean.nome}" />
-                </h2>
-
-                <h3>Minha Conta</h3>
-
-                <h:form>
-                    <!-- Botões de Cadastro para Usuários do Tipo "Editor" -->
-                    <h:commandButton value="Cadastrar Processo Seletivo" action="#{pageController.goToCadastrarProcesso()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />                    <p></p>
-                    <h:commandButton value="Cadastrar Usuario" action="#{pageController.goToAdminCadastro()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary" />                                         <p></p>
-                    <h:commandButton value="Atribuir Nota" action="#{pageController.goToAtribuirNota()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'ADMINISTRADOR'}" styleClass="btn btn-primary mb-3" />                   
-                    <h:commandButton value="Cadastrar Postagem" action="#{pageController.goToCadastrarPostagem()}" rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'EDITOR'}" styleClass="btn btn-primary" />
                     
-                    <h:commandButton value="Ver Notas" action="#{pageController.goToNotas()}"  rendered="#{usuarioSessionBean.usuario.credencial.perfil == 'CANDIDATO'}"/>
-                </h:form>
-
-                <h4>Editar dados</h4>
-                <h:form id="minhaContaForm">
-                    <p:panelGrid columns="2" styleClass="panelGrid">
-                        <p:outputLabel value="Nome:" styleClass="outputLabel" />
-                        <p:inputText id="nome" value="#{usuarioSessionBean.nome}" required="true" styleClass="inputText" />
-
-                        <p:outputLabel value="Email:" styleClass="outputLabel" />
-                        <p:inputText id="email" value="#{usuarioSessionBean.email}" required="true" styleClass="inputText" />
-                    </p:panelGrid>
-
-                    <p:commandButton value="Salvar" action="#{usuarioSessionBean.salvarAlteracoes}" ajax="false" styleClass="commandButton" />
-                </h:form>
+                </div>
             </div>
-        </ui:define>
-    </ui:composition>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </h:body>
 </html>
