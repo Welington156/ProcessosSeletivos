@@ -9,3 +9,9 @@ Diagrama de Classes:
 /subsystem=undertow/application-security-domain=other:write-attribute(name=integrated-jaspi, value=false)
 
 :reload
+
+Usuarios inicias:
+  Nome             Email          Senha       Perfil
+"Emilly"  "candidato@gmail.com"  "1234"    Perfil.CANDIDATO
+"Caua"    "admin@gmail.com"      "1234"    Perfil.ADMINISTRADOR
+"Junio"   "editor@gmail.com"     "1234"    Perfil.EDITOR
